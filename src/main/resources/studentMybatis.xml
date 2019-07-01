@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <typeAliases>
+       <package name="com.kgc.house.pojo"/>
+   </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="reasonable" value="true"/>
+            <property name="helperDialect" value="mysql"/>
+        </plugin>
+    </plugins>
+
+    <mappers>
+        <mapper resource="com/kgc/house/mapper/DistrictMapper.xml"/>
+        <mapper resource="com/kgc/house/mapper/HouseMapper.xml"/>
+        <mapper resource="com/kgc/house/mapper/StreetMapper.xml"/>
+        <mapper resource="com/kgc/house/mapper/TypeMapper.xml"/>
+        <mapper resource="com/kgc/house/mapper/UsersMapper.xml"/>
+    </mappers>
+
+
+</configuration>
