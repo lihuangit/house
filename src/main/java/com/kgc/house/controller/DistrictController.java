@@ -24,6 +24,8 @@ public class DistrictController {
         map.put("total",all.getTotal());
         map.put("rows",all.getList());
 
+
+
         return map;
     }
     @RequestMapping("/add")

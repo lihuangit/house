@@ -14,6 +14,17 @@ rel=stylesheet type=text/css href="../css/style.css">
           window.location="regs.jsp";
       })
   })
+  $(function () {
+      $("#butn").click(function () {
+          $.post("/getCode",{"tel":$("#tel").val()},function (data) {
+              if(data.result>0){
+                  alert("获取验证码成功!请查看手机")
+              }else {
+                  alert("获取验证码失败!")
+              }
+          },"json")
+      })
+  })
 </script>
 
 <BODY>
@@ -37,6 +48,12 @@ rel=stylesheet type=text/css href="../css/style.css">
     <TD class=field>密　　码：</TD>
     <TD><!-- <input type="password" class="text" name="password" /> --><INPUT 
       id=userpassword class=text type=password name=password><br><span> <h3 style="color: red">${info}</h3></span> </TD></TR>
+  <tr>
+    <td colspan="2" align="left">请输入手机号码:<input type="text" name="tel" id="tel"><input type="button" id="butn" value="获取验证码"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="left">请输入验证码:<input type="text" name="inputcode"><br><span> <h3 style="color: red">${info1}</h3></span></td>
+  </tr>
 	<tr>
       <td colspan="2" align="center"><div ><a href="../admin/jsp/login1.jsp">管理用户登录</a></div></td>
     </tr>

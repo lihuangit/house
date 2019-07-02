@@ -32,17 +32,27 @@ public class UserController1 {
     }
     @RequestMapping("/userLogin")
 
-    public String userLogin(String name, String password, Model model, HttpSession session) {
+    public String userLogin(String name, String password, Model model, HttpSession session,String inputcode) {
         Users users = usersService1.userLogin(name, password);
 
-        if (users == null) {
-          model.addAttribute("info","用户名或密码错误!");
-          return "login";
-        }else {
-            session.setAttribute("user",users);
-            session.setMaxInactiveInterval(600);
-            return "guanli";
+        String text = session.getAttribute("text").toString();
+        if(inputcode.equals(text)){
+
+            if (users == null) {
+                model.addAttribute("info","用户名或密码错误!");
+                return "login";
+            }else {
+                session.setAttribute("user",users);
+                session.setMaxInactiveInterval(600);
+                return "redirect:getAllHouse";
+            }
+
+
+         }else {
+            model.addAttribute("info1","验证码输入错误!");
+            return "login";
         }
+
 
 
 
